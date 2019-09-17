@@ -4,6 +4,6 @@ Breves ejemplos demostrativos de cómo aplicar R en estudios descriptivos y anal
 
 ## contenido
 
-1. Análisis descriptivo-exploratorio con datos del brote de ébola 2019
+1. Análisis descriptivo-exploratorio con datos del brote de ébola 2014
 
 2. Evaluación de una asociación entre fumar tabaco y muerte del estudio Whickham.
