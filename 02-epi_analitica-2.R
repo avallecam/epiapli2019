@@ -26,16 +26,25 @@ smoke %>% skim()
 smoke_clean <- read_rds("data/smokeclean_20190906.rds")
 
 # tabla 1 y 2 -------------------------------------------------------------
+# byrow = T / show.all = T,sd.type = 2
+# export xls
 
-tab1 <- smoke_clean %>% 
-  compareGroups(outcome~smoker+agegrp+age,data = .,byrow = T) %>% 
-  createTable(show.all = T,sd.type = 2)
 
-tab1
+# modelo ------------------------------------------------------------------
+# outcome_1
+# epi_tidymodel_rr
 
-#exportar en XLSX
-tab1 %>% 
-  export2xls("table/tabla02.xls")
+smoke_clean %>% glimpse()
+
+#simple
+
+#multiple: controlar por confusión
+
+#exportar
+
+
+
+
 
 # medidas de asociación ---------------------------------------------------
 
@@ -54,37 +63,6 @@ smoke_tab3 <- with(smoke_clean,table(smoker_2,outcome_2,agegrp)) %>% print()
 epi.2by2(smoke_tab3,method = "cohort.count")
 mhor(mhtable=smoke_tab3,graph = F,design = "cohort")
 
-# modelo ------------------------------------------------------------------
-
-smoke_clean %>% glimpse()
-
-#simple
-wm1 <- glm(outcome_1 ~ smoker, 
-           data = smoke_clean, 
-           family = poisson(link = "log"))
-epi_tidymodel_rr(wm1)
-
-#multiple: controlar por confusión
-wm1 <- glm(outcome_1 ~ smoker + age, 
-           data = smoke_clean, 
-           family = poisson(link = "log"))
-epi_tidymodel_rr(wm1)
-
-#exportar
-epi_tidymodel_rr(wm1) %>% 
-  write_xlsx("table/tabla03.xlsx")
-
-
-
-
-# calcular error estandar robusto
-# cov.m1 <- sandwich::vcovHC(wm1, type="HC0")
-# std.err <- sqrt(diag(cov.m1))
-# r.est <- cbind(Estimate= exp(coef(wm1)), "Robust SE" = exp(std.err),
-#                "Pr(>|z|)" = 2 * pnorm(abs(coef(wm1)/std.err), lower.tail=FALSE),
-#                LL = exp(coef(wm1)) - 1.96 * exp(std.err),
-#                UL = exp(coef(wm1)) + 1.96 * exp(std.err))
-# r.est %>% round(digits = 2)
 
 
 
