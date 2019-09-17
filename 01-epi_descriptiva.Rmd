@@ -1,0 +1,52 @@
+---
+title: "reporte descriptivo"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.align = "center")
+```
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+library(tidyverse)
+library(lubridate)
+library(compareGroups)
+```
+
+# distribución en tiempo
+
+```{r}
+casos_limpio <- read_rds("data/casoslimpio_20190916.rds")
+casos_limpio %>% 
+  ggplot(aes(date_of_onset)) +
+  geom_histogram(binwidth = 7,color="white") +
+  scale_x_date(date_breaks = "7 day",date_labels = "%b-%d") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+# distribución en espacio
+
+```{r}
+casos_limpio %>% 
+  ggplot(aes(x = lon,y = lat,colour=date_of_onset)) +
+  geom_point() +
+  scale_color_gradient(low = "red",high = "yellow",trans = "date") +
+  theme_bw()
+```
+
+# tabla descriptiva
+
+```{r}
+casos_limpio %>% 
+  mutate(hospital=fct_infreq(hospital),
+         outcome=fct_infreq(outcome)) %>% 
+  select(outcome:hospital) %>% 
+  compareGroups(~.,data = .) %>% 
+  createTable() %>% 
+  export2md()
+```
+

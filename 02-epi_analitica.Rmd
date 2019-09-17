@@ -1,0 +1,51 @@
+---
+title: "epi_analitica"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,message = FALSE)
+```
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+library(mosaicData)
+library(tidyverse)
+library(skimr)
+library(rlang)
+library(naniar)
+library(compareGroups)
+library(janitor)
+library(epiR)
+library(epiDisplay)
+library(broom)
+library(avallecam)
+```
+
+# Introducción
+
+# Métodos
+
+# Resultados
+
+```{r}
+smoke_clean <- read_rds("data/smokeclean_20190906.rds")
+
+smoke_clean %>% 
+  compareGroups(outcome~smoker+agegrp+age,data = .,byrow = T) %>% 
+  createTable(show.all = T,sd.type = 2) %>% 
+  export2md()
+```
+
+```{r,results='asis'}
+wm1 <- glm(outcome_1 ~ smoker + age, 
+           data = smoke_clean, 
+           family = poisson(link = "log"))
+
+epi_tidymodel_rr(wm1) %>% 
+  xtable::xtable() %>% 
+  print(comment=FALSE)
+```
+
+# Discusión
+
+# Referencias
