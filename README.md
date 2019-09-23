@@ -23,4 +23,4 @@ Breves ejemplos demostrativos de cómo aplicar R en estudios descriptivos y anal
 
 ## ¿con qué empiezo?
 
-- ir a las versiones completas en los archivos en _negrita_
+- ir a las versiones completas en los archivos en __negrita__
