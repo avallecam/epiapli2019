@@ -37,5 +37,7 @@ smoke_clean <- smoke %>%
     agegrp=as.factor(agegrp)
   )
 
+smoke_clean %>% compareGroups::compareGroups(~.,data = .) %>% createTable()
+
 write_rds(smoke_clean,"data/smokeclean_20190906.rds")
 write_csv(smoke_clean,"data/smokeclean_20190906.csv")
