@@ -8,7 +8,7 @@ Breves ejemplos demostrativos de cómo aplicar R en estudios descriptivos y anal
 
 ----
 
-## contenido
+## contenido [ver](https://github.com/avallecam/epiapli2019)
 
 1. Análisis descriptivo-exploratorio con datos del brote de ébola 2014.
 
