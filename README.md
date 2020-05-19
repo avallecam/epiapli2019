@@ -4,7 +4,7 @@ Breves ejemplos demostrativos de cómo aplicar R en estudios descriptivos y anal
 
 ----
 
-## slides [aquí](https://github.com/avallecam/epiapli2019/blob/master/slides/epiapli2019.pdf)
+## slides [aquí](https://github.com/avallecam/epiapli2019/blob/master/slides/epiapli2019.pdf) y video [acá](https://youtu.be/C3Yqw883jrs)
 
 ----
 
