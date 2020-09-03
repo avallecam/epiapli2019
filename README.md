@@ -1,5 +1,11 @@
 # R aplicado a epidemiología
 
+
+
+[![DOI](https://zenodo.org/badge/208936564.svg)](https://zenodo.org/badge/latestdoi/208936564)
+
+
+
 Breves ejemplos demostrativos de cómo aplicar R en estudios descriptivos y analíticos.
 
 ----
